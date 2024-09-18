@@ -6,15 +6,15 @@ def getArgsList():
     # 依次传入多个 target IP，最后一个是网关 IP
     parser = argparse.ArgumentParser(description="传参")
     # 要攻击的ip 最后写网关
-    parser.add_argument('-l', type=str, nargs="+", help='runHostIP', required=False)
+    parser.add_argument('-l', type=str, nargs="+", help='runHostIPList', required=False)
     # 网卡名称
     parser.add_argument('-i', type=str, help='interfaceName', required=False)
     # 网段 写了-l不执行 格式 192.168.1.1-253
-    parser.add_argument('-n', type=str, help='ip-ip', required=False)
+    parser.add_argument('-n', type=str, help='IpRangeList', required=False)
     # n的网关 写了n网段必写
-    parser.add_argument('-r', type=str, help='ip-ip-RouteIP', required=False)
+    parser.add_argument('-r', type=str, help='RouteIp', required=False)
     # n的排除ip
-    parser.add_argument('-s', type=str, nargs="+", help='notRunIP', required=False)
+    parser.add_argument('-s', type=str, nargs="+", help='notRunIPList', required=False)
     #
     parser.add_argument('-f', type=str, help='shFileName', required=False)
     return parser.parse_args()

